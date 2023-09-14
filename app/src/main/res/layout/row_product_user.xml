@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/productIconIv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_storefront_24"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toStartOf="@id/nextIv"
+                android:layout_toEndOf="@id/productIconIv">
+                
+                
+
+
+
+                <TextView
+                    android:id="@+id/titleTv"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/descriptionTv"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The product description"
+                    android:minLines="2"
+                    android:maxLines="2"
+                    android:layout_below="@id/titleTv"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/addToCartTv"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add to cart"
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/baseline_shopping_cart_24"
+                    android:layout_below="@id/descriptionTv"
+                    android:textColor="@color/black"/>
+
+
+                
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/addToCartTv"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:id="@+id/priceTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_rec05"
+                        android:padding="5dp"
+                        android:text="200"
+                        android:textColor="@color/black"/>
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+            </RelativeLayout>
+        
+        <ImageView
+            android:id="@+id/nextIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/baseline_navigate_next_24"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

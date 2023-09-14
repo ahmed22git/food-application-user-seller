@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.AddProductActivity">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_rec01">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:background="@drawable/shape_rec_07"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Product"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/productIconIv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_storefront_24"
+            app:c_border="true"
+            app:c_border_color="@color/black"/>
+
+        <EditText
+            android:id="@+id/titleEt"
+            android:hint="Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_rec02"
+            android:drawableStart="@drawable/baseline_title_242"
+            android:drawablePadding="10dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_below="@id/productIconIv"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/descriptionEt"
+            android:hint="Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_rec02"
+            android:drawableStart="@drawable/baseline_title_242"
+            android:drawablePadding="10dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_below="@id/titleEt"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/categoryEt"
+            android:hint="Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
+            android:background="@drawable/shape_rec02"
+            android:drawableStart="@drawable/baseline_category_24"
+            android:drawablePadding="10dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_below="@id/descriptionEt"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/quantityEt"
+            android:hint="Quantity .KG ,etc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_rec02"
+            android:drawableStart="@drawable/baseline_storefront_24"
+            android:drawablePadding="10dp"
+            android:inputType="textCapWords"
+            android:layout_below="@id/categoryEt"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/priceEt"
+            android:hint="Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_rec02"
+            android:drawableStart="@drawable/baseline_storefront_24"
+            android:drawablePadding="10dp"
+            android:inputType="numberDecimal"
+            android:layout_below="@id/quantityEt"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/addProducteBtn"
+            android:text="Add Product"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:minWidth="120dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceEt"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    
+</LinearLayout>
