@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import com.example.restaurantapp.models.Constants;
 import com.example.restaurantapp.adapters.AdapterProductSeller;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -60,9 +62,15 @@ public class MainSellerActivity extends AppCompatActivity {
     private AdapterProductSeller adapterProductSeller;
     private ArrayList<ModelOrderShop> orderShopArrayList;
     private AdapterOrderShop adapterOrderShop;
+    private BottomNavigationView bottomNavigationView;
+    final int MHOME_ITEM_ID = R.id.mhome;
+
+    final int HOME_ITEM_ID = R.id.home;
+    final int NHOME_ITEM_ID = R.id.nhome;
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,10 +94,7 @@ public class MainSellerActivity extends AppCompatActivity {
         filteredOrdersTv = findViewById(R.id.filteredOrdersTv);
         filterOrderBtn = findViewById(R.id.filterOrderBtn);
         ordersRv = findViewById(R.id.ordersRv);
-
-
-
-
+        bottomNavigationView = findViewById(R.id.bottomnav);
 
 
         progressDialog  = new ProgressDialog(this);
@@ -102,6 +107,29 @@ public class MainSellerActivity extends AppCompatActivity {
         loadAllOrders();
 
         showProductsUI();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == MHOME_ITEM_ID) {
+                // Start the HomeActivity
+                makemeOffline();
+                startActivity(new Intent(this, ProfileEditUserActivity.class));
+                return true;
+            } else if (itemId == NHOME_ITEM_ID) {
+                // Call the makemeOffline() function
+                startActivity(new Intent(this, ProfileEditUserActivity.class));
+                // Handle any other actions related to "NHOME_ITEM_ID"
+                return true;
+            } else if (itemId == HOME_ITEM_ID) {
+                // Call the makemeOffline() function
+                startActivity(new Intent(this, AddProductActivity.class));
+                // The extra curly braces here seem unnecessary and can be removed
+                // return false; // This is the correct placement for the return statement
+            }
+            return false; // Add this line to cover the case where none of the if conditions match
+        });
+
 
         searchProductEt.addTextChangedListener(new TextWatcher() {
             @Override

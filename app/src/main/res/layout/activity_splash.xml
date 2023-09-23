@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/food4"
     tools:context=".activities.SplashActivity">
     
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
+        android:layout_width="600dp"
+        android:layout_height="600dp"
         android:src="@drawable/icon"
         android:layout_centerInParent="true"/>
 

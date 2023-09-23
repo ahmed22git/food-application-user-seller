@@ -112,6 +112,27 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
 
+            <TextView
+                android:id="@+id/payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Payment Method "
+                android:layout_below="@+id/totalTv"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="CASH ON DELIVERY"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/totalLabelTv"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
         </RelativeLayout>
         
         <Button

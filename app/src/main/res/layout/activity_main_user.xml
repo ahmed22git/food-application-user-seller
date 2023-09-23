@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,6 +15,7 @@
         android:background="@drawable/shape_rec01">
 
         <ImageButton
+            android:visibility="gone"
             android:id="@+id/logoutBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -22,6 +24,7 @@
             android:background="@null"/>
 
         <ImageButton
+            android:visibility="gone"
             android:id="@+id/editProfileBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -100,9 +103,11 @@
 
         </LinearLayout>
 
-
+        <!-- ... Your toolbar content ... -->
 
     </RelativeLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/shopsRl"
@@ -110,13 +115,131 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shopsRv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/row_shop" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FEATURED"
+            android:fontFamily="@font/opensansb"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
+        <!-- Wrap only the ImageView in a NestedScrollView -->
+
+
+
+        <LinearLayout
+            android:id="@+id/imagesLayout"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <!-- Add ImageView above RecyclerView and below toolbar -->
+            <ImageView
+                android:id="@+id/yourImageView"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/banner"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                tools:ignore="NotSibling" />
+
+            <ImageView
+                android:id="@+id/yourImageView2"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@id/yourImageView"
+                android:src="@drawable/banner2"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                tools:ignore="NotSibling" />
+            <ImageView
+                android:id="@+id/yourImageView3"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@id/yourImageView"
+                android:src="@drawable/banner3"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                tools:ignore="NotSibling" />
+            <ImageView
+                android:id="@+id/yourImageView4"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_toRightOf="@id/yourImageView"
+                android:src="@drawable/banner4"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                tools:ignore="NotSibling" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/imagesLayout"
+            android:id="@+id/imagesLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="SHOPS"
+                android:fontFamily="@font/opensansb"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+
+
+        </LinearLayout>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shopsRv"
+                    android:layout_below="@id/imagesLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_shop" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    tools:ignore="MissingConstraints">
+
+                    <!-- ... Your FrameLayout content ... -->
+
+                </FrameLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomnav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/dullorange"
+                app:labelVisibilityMode="labeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_menu">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
@@ -134,10 +257,8 @@
             app:stackFromEnd="true"
             app:reverseLayout="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/row_order_user"/>
-
+            tools:listitem="@layout/row_order_user" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>

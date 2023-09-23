@@ -1,107 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    app:cardElevation="3dp"-->
+<!--    app:contentPadding="5dp">-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/productIconIv"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@drawable/baseline_storefront_24"/>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_toStartOf="@id/nextIv"-->
+<!--                android:layout_toEndOf="@id/productIconIv">-->
+
+
+
+
+
+<!--                <TextView-->
+<!--                    android:id="@+id/titleTv"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Title"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/descriptionTv"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="The product description"-->
+<!--                    android:minLines="2"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:layout_below="@id/titleTv"-->
+<!--                    android:textColor="@color/black"/>-->
+
+
+
+
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/addToCartTv"-->
+<!--                    android:padding="5dp">-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/priceTv"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/shape_rec05"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="200"-->
+<!--                        android:textColor="@color/black"/>-->
+
+
+<!--                </RelativeLayout>-->
+
+
+
+
+
+
+<!--            </RelativeLayout>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/nextIv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:src="@drawable/baseline_navigate_next_24"/>-->
+
+
+<!--    </RelativeLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="3dp"
-    app:contentPadding="5dp">
-    
-    <RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="5dp"
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:id="@+id/productIconIv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/baseline_storefront_24"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
 
+            <!-- Move the background RelativeLayout (abcd) to the top -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="vertical"
-                android:layout_toStartOf="@id/nextIv"
-                android:layout_toEndOf="@id/productIconIv">
-                
-                
+                android:id="@+id/abcd"
+                android:background="@drawable/card_back_filled">
 
-
-
-                <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/descriptionTv"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="The product description"
-                    android:minLines="2"
-                    android:maxLines="2"
-                    android:layout_below="@id/titleTv"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/addToCartTv"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add to cart"
-                    android:gravity="center_vertical"
-                    android:drawableStart="@drawable/baseline_shopping_cart_24"
-                    android:layout_below="@id/descriptionTv"
-                    android:textColor="@color/black"/>
-
-
-                
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/addToCartTv"
-                    android:padding="5dp">
-
-
-                    <TextView
-                        android:id="@+id/priceTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_rec05"
-                        android:padding="5dp"
-                        android:text="200"
-                        android:textColor="@color/black"/>
-
-
-                </RelativeLayout>
-
-
-
-
-
+                <ImageView
+                    android:id="@+id/productIconIv"
+                    android:layout_width="300dp"
+                    android:layout_height="170dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/baseline_storefront_24" />
 
             </RelativeLayout>
-        
-        <ImageView
-            android:id="@+id/nextIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:src="@drawable/baseline_navigate_next_24"/>
 
+            <!-- Move the title below the background RelativeLayout -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/abcd"
+                android:text="Product title"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/titleTv"/>
 
-    </RelativeLayout>
+            <!-- Description TextView should be below title, not price -->
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleTv"
+                android:text="Product Descr"
+                android:layout_weight="1"
+                android:minLines="2"
+                android:maxLines="2"
+                android:textColor="@color/gray"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/descriptionTv"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
 
-</androidx.cardview.widget.CardView>
+            <!-- Price TextView should be to the right of the description -->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_toRightOf="@id/descriptionTv"-->
+<!--                android:id="@+id/priceTv"-->
+<!--                android:text="Rs.400"-->
+<!--                android:layout_below="@id/titleTv"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:gravity="right"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="15dp"/>-->
+
+            <!-- Add to Cart TextView should be below price -->
+            <TextView
+                android:id="@+id/addToCartTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to cart"
+                android:background="@drawable/shape_rec02"
+                android:gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/titleTv"
+                android:layout_alignParentRight="true"
+                android:drawableStart="@drawable/baseline_shopping_cart_24"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs.400"
+                android:gravity="right"
+                android:layout_below="@id/addToCartTv"
+                android:layout_alignParentRight="true"
+                android:textSize="17dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+

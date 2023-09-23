@@ -2,12 +2,14 @@ package com.example.restaurantapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +24,7 @@ import com.example.restaurantapp.R;
 import com.example.restaurantapp.adapters.AdapterShop;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +44,7 @@ public class MainUserActivity extends AppCompatActivity {
     private RelativeLayout shopsRl,ordersRl;
 
     private ImageButton logoutBtn,editProfileBtn;
-    private ImageView profileIv;
+    private ImageView profileIv,yourimageview,yourimageview2,yourimageview3,yourimageview4;
     private RecyclerView shopsRv,ordersRv;
     private ArrayList<ModelShop> shopList;
     private ArrayList<ModelOrderUser> ordersList;
@@ -50,6 +53,9 @@ public class MainUserActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private BottomNavigationView bottomNavigationView;
+    final int MHOME_ITEM_ID = R.id.mhome;
+    final int NHOME_ITEM_ID = R.id.nhome;
 
 
     @SuppressLint("MissingInflatedId")
@@ -70,6 +76,12 @@ public class MainUserActivity extends AppCompatActivity {
         ordersRl=findViewById(R.id.ordersRl);
         shopsRv=findViewById(R.id.shopsRv);
         ordersRv=findViewById(R.id.ordersRv);
+        bottomNavigationView = findViewById(R.id.bottomnav);
+        yourimageview = findViewById(R.id.yourImageView);
+        yourimageview2 = findViewById(R.id.yourImageView2);
+        yourimageview3 = findViewById(R.id.yourImageView3);
+        yourimageview4 = findViewById(R.id.yourImageView4);
+
 
         progressDialog  = new ProgressDialog(this);
         progressDialog.setTitle("Please wait");
@@ -79,6 +91,104 @@ public class MainUserActivity extends AppCompatActivity {
         checkUser();
 
         showShopsUI();
+
+        yourimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainUserActivity.this, "ImageView clicked", Toast.LENGTH_SHORT).show();
+                int desiredItemPosition = 5;
+                Log.d("ScrollDebug", "Desired Position: " + desiredItemPosition);
+
+                if (shopList != null && desiredItemPosition >= 0 && desiredItemPosition < shopList.size()) {
+                    shopsRv.scrollToPosition(desiredItemPosition);
+                } else {
+                    Log.e("ScrollError", "Invalid position or shopList is null/empty.");
+                }
+                // Scroll to or select a specific item in the RecyclerView
+                // Replace with the position of the item you want to open
+                shopsRv.smoothScrollToPosition(desiredItemPosition);
+            }
+        });
+        yourimageview2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainUserActivity.this, "ImageView clicked", Toast.LENGTH_SHORT).show();
+                int desiredItemPosition = 3;
+                Log.d("ScrollDebug", "Desired Position: " + desiredItemPosition);
+
+                if (shopList != null && desiredItemPosition >= 0 && desiredItemPosition < shopList.size()) {
+                    shopsRv.scrollToPosition(desiredItemPosition);
+                } else {
+                    Log.e("ScrollError", "Invalid position or shopList is null/empty.");
+                }
+                // Scroll to or select a specific item in the RecyclerView
+                // Replace with the position of the item you want to open
+                shopsRv.smoothScrollToPosition(desiredItemPosition);
+            }
+        });
+        yourimageview3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainUserActivity.this, "ImageView clicked", Toast.LENGTH_SHORT).show();
+                int desiredItemPosition = 1;
+                Log.d("ScrollDebug", "Desired Position: " + desiredItemPosition);
+
+                if (shopList != null && desiredItemPosition >= 0 && desiredItemPosition < shopList.size()) {
+                    shopsRv.scrollToPosition(desiredItemPosition);
+                } else {
+                    Log.e("ScrollError", "Invalid position or shopList is null/empty.");
+                }
+                // Scroll to or select a specific item in the RecyclerView
+                // Replace with the position of the item you want to open
+                shopsRv.smoothScrollToPosition(desiredItemPosition);
+            }
+        });
+        yourimageview4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainUserActivity.this, "ImageView clicked", Toast.LENGTH_SHORT).show();
+                int desiredItemPosition = 6;
+                Log.d("ScrollDebug", "Desired Position: " + desiredItemPosition);
+
+                if (shopList != null && desiredItemPosition >= 0 && desiredItemPosition < shopList.size()) {
+                    shopsRv.scrollToPosition(desiredItemPosition);
+                } else {
+                    Log.e("ScrollError", "Invalid position or shopList is null/empty.");
+                }
+                // Scroll to or select a specific item in the RecyclerView
+                // Replace with the position of the item you want to open
+                shopsRv.smoothScrollToPosition(desiredItemPosition);
+            }
+        });
+
+
+        ArrayList<ModelShop> shopList = new ArrayList<>();
+        AdapterShop adapterShop = new AdapterShop(this, shopList);
+
+// Set up your RecyclerView
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        shopsRv.setLayoutManager(layoutManager);
+
+// Set the adapter for your RecyclerView
+        shopsRv.setAdapter(adapterShop);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == MHOME_ITEM_ID) {
+                // Start the HomeActivity
+                makemeOffline();
+                startActivity(new Intent(this, ProfileEditUserActivity.class));
+                return true;
+            } else if (itemId == NHOME_ITEM_ID) {
+                // Call the makemeOffline() function
+                startActivity(new Intent(this, ProfileEditUserActivity.class));
+                // Handle any other actions related to "MHOME_ITEM_ID"
+                return true;
+            } {
+                return false;
+            }
+        });
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override

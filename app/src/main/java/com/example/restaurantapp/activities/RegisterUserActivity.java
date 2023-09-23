@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -54,7 +55,7 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
 
     private ImageView profileIv;
 
-    private EditText nameEt, phoneEt,countryEt,cityEt, stateEt,addressEt,emailEt,passwordEt,cpasswordEt;
+    private EditText nameEt, phoneEt,addressEt,emailEt,passwordEt,cpasswordEt;
 
     private Button registerBtn;
 
@@ -89,9 +90,6 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
         profileIv = findViewById(R.id.profileIv);
         nameEt = findViewById(R.id.nameEt);
         phoneEt = findViewById(R.id.phoneEt);
-        countryEt = findViewById(R.id.countryEt);
-        cityEt = findViewById(R.id.cityEt);
-        stateEt = findViewById(R.id.stateEt);
         addressEt = findViewById(R.id.addressEt);
         emailEt = findViewById(R.id.emailEt);
         passwordEt = findViewById(R.id.passwordEt);
@@ -153,9 +151,6 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
     private void inputData() {
         fullName = nameEt.getText().toString().trim();
         phonenumber = phoneEt.getText().toString().trim();
-        country = countryEt.getText().toString().trim();
-        state = stateEt.getText().toString().trim();
-        city = cityEt.getText().toString().trim();
         email = emailEt.getText().toString().trim();
         address = addressEt.getText().toString().trim();
         password = passwordEt.getText().toString().trim();
@@ -169,10 +164,10 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
             Toast.makeText(this, "Enter phonenumber", Toast.LENGTH_SHORT).show();
             return;
         }
-//        if(latitude == 0.0 || longitude == 0.0){
-//            Toast.makeText(this, "Please click GPS button to detect your location", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        if(TextUtils.isEmpty(address)){
+            Toast.makeText(this, "Please click GPS button to detect your location", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             Toast.makeText(this, "Invalid Email Pattern", Toast.LENGTH_SHORT).show();
             return;
@@ -390,11 +385,15 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
             ActivityCompat.requestPermissions(this,cameraPermissions,CAMERA_REQUEST_CODE);
         }
 
+        @SuppressLint("MissingPermission")
         private void detectLocation() {
-//            Toast.makeText(this, "Please Wait", Toast.LENGTH_LONG).show();
-//
-//            locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,2000,10,this);
+            try {
+            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5,RegisterUserActivity.this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         }
         private boolean checkLocationPermission(){
@@ -418,10 +417,8 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
                 String state = addresses.get(0).getAdminArea();
                 String country = addresses.get(0).getCountryName();
 
-                countryEt.setText(country);
-                stateEt.setText(state);
-                cityEt.setText(city);
-                addressEt.setText(address);
+
+//                addressEt.setText(address);
 
 
             }
@@ -432,15 +429,17 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
 
         @Override
         public void onLocationChanged(@NonNull Location location) {
-//            if (location != null && location.getLatitude() != 0.0 && location.getLongitude() != 0.0) {
-//                // Location is valid
-//                latitude = location.getLatitude();
-//                longitude = location.getLongitude();
-//                findAddress();
-//            } else {
-//                // Location is invalid, handle accordingly (e.g., show an error message)
-//                Toast.makeText(this, "Invalid location data", Toast.LENGTH_SHORT).show();
-//            }
+           Toast.makeText(this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
+        try {
+            Geocoder geocoder = new Geocoder(RegisterUserActivity.this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            String address = addresses.get(0).getAddressLine(0);
+
+            addressEt.setText(address);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         }
 
 
@@ -448,18 +447,17 @@ public class RegisterUserActivity extends AppCompatActivity implements LocationL
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            LocationListener.super.onStatusChanged(provider, status, extras);
+
         }
 
         @Override
         public void onProviderEnabled(@NonNull String provider) {
-            LocationListener.super.onProviderEnabled(provider);
+
         }
 
         @Override
         public void onProviderDisabled(@NonNull String provider) {
-            LocationListener.super.onProviderDisabled(provider);
-            Toast.makeText(this, "Please turn on location", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override

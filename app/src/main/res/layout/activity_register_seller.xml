@@ -45,11 +45,11 @@
 
 
 
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iconIv">
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -59,12 +59,11 @@
                 android:layout_height="100dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="60dp"
-                android:layout_below="@id/iconIv"
                 android:layout_centerHorizontal="true"
                 app:c_border="true"
                 app:c_border_color="@color/orange"
                 app:c_border_width="2dp"
-                android:src="@drawable/person"/>
+                android:src="@drawable/baseline_storefront_24"/>
 
 
 
@@ -230,7 +229,7 @@
                 android:layout_below="@id/cpasswordEt"/>
 
         </RelativeLayout>
-        
+
     </ScrollView>
 
 

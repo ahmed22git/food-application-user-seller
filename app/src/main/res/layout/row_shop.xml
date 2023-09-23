@@ -4,38 +4,34 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="1dp"
-    app:cardElevation="3dp"
-    app:contentPadding="5dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    android:background="@color/black"
+    app:cardElevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp"
+        android:background="@color/dullblack"
+        >
 
         <com.blogspot.atifsoftwares.circularimageview.CircularImageView
             android:id="@+id/shopIv"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/baseline_storefront_24"
             app:c_border="true"
             app:c_border_width="1dp"
-            app:c_border_color="@color/black"/>
+            app:c_border_color="@color/white"/>
 
-        <ImageView
-            android:id="@+id/onlineIv"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/shape_circle03"/>
 
-        <TextView
-            android:id="@+id/shopClosedTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/nextIv"
-            android:padding="5dp"
-            android:text="Closed"
-            android:background="@drawable/shape_rec06"
-            android:textSize="10sp"/>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,8 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
+            android:textSize="30sp"
+            android:padding="15dp"
             android:text="ShopName"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"/>
 
             <TextView
@@ -60,8 +58,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:maxLines="1"
-                android:text="ShopName"
-                android:textColor="@color/black"
+                android:layout_marginLeft="15dp"
+                android:drawableStart="@drawable/baseline_call_24"
+                android:text="shopno"
+                android:textColor="@color/white"
                 android:textStyle="bold"/>
 
             <TextView
@@ -69,9 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:drawableStart="@drawable/baseline_location"
                 android:maxLines="1"
-                android:text="ShopName"
-                android:textColor="@color/black"
+                android:text="address"
+                android:textColor="@color/white"
                 android:textStyle="bold"/>
 
             <RatingBar
@@ -81,7 +83,7 @@
                 android:layout_gravity="end"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:numStars="5"
-                android:rating="3.5"/>
+                android:rating="5"/>
 
 
 

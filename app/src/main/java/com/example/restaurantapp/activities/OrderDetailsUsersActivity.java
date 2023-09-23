@@ -111,9 +111,10 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
                         String orderStatus = ""+snapshot.child("orderStatus").getValue();
                         String orderTime = ""+snapshot.child("orderTime").getValue();
                         String orderTo = ""+snapshot.child("orderTo").getValue();
-                        String deliveryfee = ""+snapshot.child("deliveryfee").getValue();
+                        String deliveryFee = ""+snapshot.child("deliveryFee").getValue();
                         String latitude = ""+snapshot.child("latitude").getValue();
                         String longitude = ""+snapshot.child("longitude").getValue();
+                        String address = ""+snapshot.child("address").getValue();
 
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTimeInMillis(Long.parseLong(orderTime));
@@ -132,8 +133,9 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
                         }
                         orderIdTv.setText(orderId);
                         orderStatusTv.setText(orderStatus);
-                        amountTv.setText("Rs"+orderCost+ "[Includeing delivery Charges Rs"+deliveryfee+"]");
+                        amountTv.setText("Rs"+orderCost+ "[Including delivery Charges Rs"+deliveryFee+"]");
                         dateTv.setText(formatedDate);
+                        addressTv.setText(address);
 
 //                        findAddress(latitude,longitude);
 
@@ -174,7 +176,7 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String shopName = ""+snapshot.child("shopName").getValue();
+                        String shopName = ""+snapshot.child("shopname").getValue();
                         shopNameTv.setText(shopName);
 
                     }
@@ -184,5 +186,6 @@ public class OrderDetailsUsersActivity extends AppCompatActivity {
 
                     }
                 });
+
     }
 }

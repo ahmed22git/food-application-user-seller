@@ -14,6 +14,7 @@
         android:background="@drawable/shape_rec01">
 
         <ImageButton
+            android:visibility="gone"
             android:id="@+id/logoutBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -22,6 +23,7 @@
             android:background="@null"/>
 
         <ImageButton
+            android:visibility="gone"
             android:id="@+id/editProfileBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -32,6 +34,7 @@
 
 
         <ImageButton
+            android:visibility="gone"
             android:id="@+id/addProducteBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -198,6 +201,24 @@
 
 
     </RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomnav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/dullorange"
+            app:menu="@menu/sellermenu"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

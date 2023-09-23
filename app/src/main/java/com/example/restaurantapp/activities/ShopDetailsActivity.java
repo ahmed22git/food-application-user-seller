@@ -322,17 +322,37 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
         // Store the order in the seller's database
         sellerOrderRef.child(timestamp).setValue(orderData)
+
+
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         // Store the reference to the order in the user's database
                         userOrderRef.child(timestamp).setValue(orderData)
+
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(shopUid).child("Orders");
                                     @Override
                                     public void onSuccess(Void unused) {
                                         for (int i = 0; i < cartItemList.size(); i++) {
                                             // ...
                                             // Store order items in both the seller's and user's databases
+                                            String pId = cartItemList.get(i).getpId();
+                                            String id = cartItemList.get(i).getId();
+                                            String cost = cartItemList.get(i).getCost();
+                                            String name = cartItemList.get(i).getName();
+                                            String price = cartItemList.get(i).getPrice();
+                                            String quantity = cartItemList.get(i).getQuantity();
+
+                                            HashMap<String, String> hashMap1 = new HashMap<>();
+                                            hashMap1.put("pId",pId);
+                                            hashMap1.put("name",name);
+                                            hashMap1.put("cost",cost);
+                                            hashMap1.put("price",price);
+                                            hashMap1.put("quantity",quantity);
+
+                                            ref.child(timestamp).child("Items").child(pId).setValue(hashMap1);
+
                                         }
                                         progressDialog.dismiss();
                                         Toast.makeText(ShopDetailsActivity.this, "Order Placed Successfully", Toast.LENGTH_SHORT).show();
@@ -410,7 +430,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = ""+snapshot.child("name").getValue();
-                shopName = ""+snapshot.child("shopName").getValue();
+                shopName = ""+snapshot.child("shopname").getValue();
                 shopEmail = ""+snapshot.child("email").getValue();
                 shopPhone = ""+snapshot.child("phone").getValue();
                 shopAddress = ""+snapshot.child("address").getValue();

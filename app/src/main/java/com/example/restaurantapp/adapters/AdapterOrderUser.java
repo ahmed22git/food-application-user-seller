@@ -96,7 +96,7 @@ public class AdapterOrderUser extends RecyclerView.Adapter<AdapterOrderUser.Hold
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String shopName = ""+snapshot.child("shopName").getValue();
+                        String shopName = ""+snapshot.child("shopname").getValue();
                         holder.shopNameTv.setText(shopName);
                     }
 

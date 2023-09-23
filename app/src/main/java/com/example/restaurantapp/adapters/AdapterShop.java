@@ -29,6 +29,8 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         this.shopList = shopList;
     }
 
+
+
     @NonNull
     @Override
     public HolderShop onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -105,8 +107,6 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
 
 
             shopIv = itemView.findViewById(R.id.shopIv);
-            shopClosedTv = itemView.findViewById(R.id.shopClosedTv);
-            onlineIv = itemView.findViewById(R.id.onlineIv);
             shopNametv = itemView.findViewById(R.id.shopNametv);
             phoneTv = itemView.findViewById(R.id.phoneTv);
             addressTv = itemView.findViewById(R.id.addressTv);

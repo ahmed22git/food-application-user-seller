@@ -7,6 +7,8 @@
     <color name="orange">#FFA500</color>
     <color name="red">#F44336</color>
     <color name="pink">#F4E4E2</color>
+    <color name="dullorange">#DB804E</color>
+    <color name="dullblack">#454545</color>
 
 
 </resources>

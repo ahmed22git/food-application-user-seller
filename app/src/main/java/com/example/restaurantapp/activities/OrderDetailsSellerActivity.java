@@ -77,9 +77,9 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         loadMyInfo();
-//        loadBuyerInfo();
+        loadBuyerInfo();
         loadOrderDetails();
-//        loadOrderedItems();
+        loadOrderedItems();
 
 
 
@@ -170,28 +170,31 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
                 });
     }
 
-//    private void loadBuyerInfo() {
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-//        ref.child(orderBy)
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+    private void loadBuyerInfo() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(orderBy)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                        destinationLatitude = ""+snapshot.child("latitude").getValue();
 //                        destinationLongitude = ""+snapshot.child("longitude").getValue();
-//                        String email = ""+snapshot.child("email").getValue();
-//                        String phone = ""+snapshot.child("phone").getValue();
-//
-//                        emailTv.setText(email);
-//                        phoneTv.setText(phone);
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//    }
+                        String email = ""+snapshot.child("email").getValue();
+                        String phone = ""+snapshot.child("phone").getValue();
+                        String address = ""+snapshot.child("address").getValue();
+
+
+                        emailTv.setText(email);
+                        phoneTv.setText(phone);
+                        addressTv.setText(address);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
 
 
     private void loadOrderDetails(){
@@ -261,31 +264,31 @@ public class OrderDetailsSellerActivity extends AppCompatActivity {
     }
 
     private void loadOrderedItems(){
-//        orderedItemsArrayList = new ArrayList<>();
-//
-//        DatabaseReference ref =  FirebaseDatabase.getInstance().getReference("Users");
-//        ref.child(firebaseAuth.getUid()).child("Orders").child(orderId).child("Items")
-//                .addValueEventListener(new ValueEventListener() {
-//                    @SuppressLint("SetTextI18n")
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        orderedItemsArrayList.clear();
-//                        for (DataSnapshot ds:snapshot.getChildren()){
-//                            ModelOrderedItem modelOrderedItem = ds.getValue(ModelOrderedItem.class);
-//
-//                            orderedItemsArrayList.add(modelOrderedItem);
-//                        }
-//                        adapterOrderedItem = new AdapterOrderedItem(OrderDetailsSellerActivity.this,orderedItemsArrayList);
-//                        itemsRv.setAdapter(adapterOrderedItem);
-//
-//                        totalItemsTv.setText(""+snapshot.getChildrenCount());
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
+        orderedItemsArrayList = new ArrayList<>();
+
+        DatabaseReference ref =  FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(firebaseAuth.getUid()).child("Orders").child(orderId).child("Items")
+                .addValueEventListener(new ValueEventListener() {
+                    
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        orderedItemsArrayList.clear();
+                        for (DataSnapshot ds:snapshot.getChildren()){
+                            ModelOrderedItem modelOrderedItem = ds.getValue(ModelOrderedItem.class);
+
+                            orderedItemsArrayList.add(modelOrderedItem);
+                        }
+                        adapterOrderedItem = new AdapterOrderedItem(OrderDetailsSellerActivity.this,orderedItemsArrayList);
+                        itemsRv.setAdapter(adapterOrderedItem);
+
+                        totalItemsTv.setText(""+snapshot.getChildrenCount());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
     }
 
